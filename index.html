@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>IOC Defanger/Refanger</title>
+  </head>
+  <body>
+    <h1>Indicator Defang/Refanger</h1>
+    <textarea id="input-text" rows="16" cols="60" placeholder="Enter text here..."></textarea>
+    <br/>
+    <button onclick="takeAction('de')"><b>DE</b>fang</button>
+    <button onclick="takeAction('re')"><b>RE</b>fang</button>
+    <br/><br/>
+    <div id="output"></div>
+
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+    <script src="./regexes.js"></script>
+    <script src="./fang.js"></script>
+    <script src="./utility.js"></script>
+  </body>
+</html>

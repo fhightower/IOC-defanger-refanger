@@ -1,0 +1,23 @@
+{
+  "name": "indicator-defang-refang",
+  "version": "1.0.0",
+  "description": "IOC Defanger/Refanger",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "IOC",
+    "Indicator",
+    "ThreatConnect",
+    "Defang",
+    "Refang",
+    "Fang"
+  ],
+  "author": "Floyd Hightower",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "~1.7.8"
+  }
+}

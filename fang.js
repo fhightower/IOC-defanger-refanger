@@ -9,21 +9,27 @@ function removeRegex(str) {
     return cleanedRegex;
 }
 
+function fang(regexes, text) {
+    /* Run through each of the regexes and make the replacements in the given text. */
+    for (var i = regexes.length - 1; i >= 0; i--) {
+        text = text.replace(regexes[i].find, removeRegex(String(regexes[i].replace)));
+    }
+
+    return text;
+}
+
 function takeAction(action) {
     /* Refang or Defang the text. */
     // find the input text
     var text = document.getElementById('input-text').value;
 
-    // refang/defang
-    for (var i = regexes.length - 1; i >= 0; i--) {
-        // defang
-        if (action === "de") {
-            text = text.replace(regexes[i].find, removeRegex(String(regexes[i].replace)));
-        }
-        // refang
-        else if (action === "re") {
-            text = text.replace(regexes[i].replace, removeRegex(String(regexes[i].find)));
-        }
+    // defang
+    if (action === "de") {
+        text = fang(defangRegexes, text);
+    }
+    // refang
+    else if (action === "re") {
+        text = fang(refangRegexes, text);
     }
 
     // provide the output

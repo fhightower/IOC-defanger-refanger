@@ -12,7 +12,23 @@ function removeRegex(str) {
 function fang(regexes, text) {
     /* Run through each of the regexes and make the replacements in the given text. */
     for (var i = regexes.length - 1; i >= 0; i--) {
-        text = text.replace(regexes[i].find, removeRegex(String(regexes[i].replace)));
+        var matches = regexes[i].find.exec(text);
+        if (matches) {
+            // TODO: there may be a more efficient way to do the chunk below... I haven't look into it yet
+            if (matches.length > 1) {
+                console.log("many matches found: ", String(regexes[i].find));
+                function replacer(match, selection1) {
+                    /* Replace selection1 with the replacement. */
+                    return match.replace(selection1, regexes[i].replace);
+                }
+                text = text.replace(regexes[i].find, replacer);
+            } else {
+                console.log("one match found", removeRegex(String(regexes[i].find)));
+                console.log("find", removeRegex(String(regexes[i].find)));
+                console.log("replace", regexes[i].replace);
+                text = text.replace(regexes[i].find, regexes[i].replace);
+            }
+        }
     }
 
     return text;
@@ -28,7 +44,7 @@ function takeAction(action) {
         text = fang(defangRegexes, text);
     }
     // refang
-    else if (action === "re") {
+    else if (action === "fa") {
         text = fang(refangRegexes, text);
     }
 

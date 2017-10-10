@@ -45,4 +45,4 @@ var refangRegexes = [];
 getDataset("https://ioc-fang.github.io/defanging-dataset/defang.json", defangRegexes);
 
 // retrieve the regexes for refanging
-getDataset("https://ioc-fang.github.io/fanging-dataset/refang.json", refangRegexes, escapeRegex=true);
+getDataset("https://ioc-fang.github.io/fanging-dataset/fang.json", refangRegexes, escapeRegex=true);
